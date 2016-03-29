@@ -28,6 +28,8 @@
 		47F794B51C9850110043BE7A /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F794B41C9850110043BE7A /* NSString+Helper.m */; };
 		47FDADBB1CAA7207002D58DA /* JDBaseTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FDADBA1CAA7207002D58DA /* JDBaseTableProvider.m */; };
 		47FDADBE1CAA7217002D58DA /* JDFriendsTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FDADBD1CAA7217002D58DA /* JDFriendsTableProvider.m */; };
+		47FDADCB1CAA7DEF002D58DA /* JDParentUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FDADC61CAA7DEF002D58DA /* JDParentUser+CoreDataProperties.m */; };
+		47FDADCC1CAA7DEF002D58DA /* JDParentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FDADC81CAA7DEF002D58DA /* JDParentUser.m */; };
 		E7B2150845950827CF0339CE /* libPods-VKClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D151449F636477D6172410 /* libPods-VKClient.a */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,10 @@
 		47FDADBA1CAA7207002D58DA /* JDBaseTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDBaseTableProvider.m; sourceTree = "<group>"; };
 		47FDADBC1CAA7217002D58DA /* JDFriendsTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDFriendsTableProvider.h; path = ../JDFriendsTableProvider.h; sourceTree = "<group>"; };
 		47FDADBD1CAA7217002D58DA /* JDFriendsTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDFriendsTableProvider.m; path = ../JDFriendsTableProvider.m; sourceTree = "<group>"; };
+		47FDADC51CAA7DEF002D58DA /* JDParentUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JDParentUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		47FDADC61CAA7DEF002D58DA /* JDParentUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JDParentUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		47FDADC71CAA7DEF002D58DA /* JDParentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDParentUser.h; sourceTree = "<group>"; };
+		47FDADC81CAA7DEF002D58DA /* JDParentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDParentUser.m; sourceTree = "<group>"; };
 		F4D151449F636477D6172410 /* libPods-VKClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VKClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -185,6 +191,7 @@
 		47F794701C9811DD0043BE7A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				47FDADC01CAA7DE2002D58DA /* New */,
 				47AB622E1CA9B55B001A53EE /* Friend */,
 				47F794711C9811E60043BE7A /* User */,
 			);
@@ -268,6 +275,17 @@
 				47FDADBD1CAA7217002D58DA /* JDFriendsTableProvider.m */,
 			);
 			name = Tables;
+			sourceTree = "<group>";
+		};
+		47FDADC01CAA7DE2002D58DA /* New */ = {
+			isa = PBXGroup;
+			children = (
+				47FDADC51CAA7DEF002D58DA /* JDParentUser+CoreDataProperties.h */,
+				47FDADC61CAA7DEF002D58DA /* JDParentUser+CoreDataProperties.m */,
+				47FDADC71CAA7DEF002D58DA /* JDParentUser.h */,
+				47FDADC81CAA7DEF002D58DA /* JDParentUser.m */,
+			);
+			name = New;
 			sourceTree = "<group>";
 		};
 		C8A6B6FEC381A1A087D775B6 /* Pods */ = {
@@ -411,8 +429,10 @@
 				47AB62271CA9AC89001A53EE /* JDFriendCell.m in Sources */,
 				47F7944D1C980C6E0043BE7A /* AppDelegate.m in Sources */,
 				47F794B21C98311F0043BE7A /* JDUser.m in Sources */,
+				47FDADCB1CAA7DEF002D58DA /* JDParentUser+CoreDataProperties.m in Sources */,
 				47AB622C1CA9B552001A53EE /* JDFriend+CoreDataProperties.m in Sources */,
 				47F7947B1C9815E20043BE7A /* AuthWebViewController.m in Sources */,
+				47FDADCC1CAA7DEF002D58DA /* JDParentUser.m in Sources */,
 				47F7944A1C980C6E0043BE7A /* main.m in Sources */,
 				47F794741C9813CB0043BE7A /* JDUserInfoViewController.m in Sources */,
 				47FDADBB1CAA7207002D58DA /* JDBaseTableProvider.m in Sources */,

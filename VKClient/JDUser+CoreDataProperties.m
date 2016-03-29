@@ -13,10 +13,7 @@
 
 @implementation JDUser (CoreDataProperties)
 
-@dynamic first_name;
 @dynamic id;
-@dynamic last_name;
-@dynamic photo_50;
 @dynamic friends;
 
 @end

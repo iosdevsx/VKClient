@@ -1,5 +1,5 @@
 //
-//  JDFriend+CoreDataProperties.h
+//  JDParentUser+CoreDataProperties.h
 //  VKClient
 //
 //  Created by jsd on 29.03.16.
@@ -9,14 +9,15 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "JDFriend.h"
+#import "JDParentUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JDFriend (CoreDataProperties)
+@interface JDParentUser (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *uid;
-@property (nullable, nonatomic, retain) JDUser *currentUser;
+@property (nullable, nonatomic, retain) NSString *first_name;
+@property (nullable, nonatomic, retain) NSString *last_name;
+@property (nullable, nonatomic, retain) NSString *photo_50;
 
 @end
 

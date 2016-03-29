@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "JDParentUser.h"
 
 @class JDUser;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JDFriend : NSManagedObject
+@interface JDFriend : JDParentUser
 
 + (void) removeAll;
 

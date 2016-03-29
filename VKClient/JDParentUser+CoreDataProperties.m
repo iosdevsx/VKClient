@@ -1,5 +1,5 @@
 //
-//  JDFriend+CoreDataProperties.m
+//  JDParentUser+CoreDataProperties.m
 //  VKClient
 //
 //  Created by jsd on 29.03.16.
@@ -9,11 +9,12 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "JDFriend+CoreDataProperties.h"
+#import "JDParentUser+CoreDataProperties.h"
 
-@implementation JDFriend (CoreDataProperties)
+@implementation JDParentUser (CoreDataProperties)
 
-@dynamic uid;
-@dynamic currentUser;
+@dynamic first_name;
+@dynamic last_name;
+@dynamic photo_50;
 
 @end

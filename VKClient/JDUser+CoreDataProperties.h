@@ -16,10 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JDUser (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *first_name;
 @property (nullable, nonatomic, retain) NSNumber *id;
-@property (nullable, nonatomic, retain) NSString *last_name;
-@property (nullable, nonatomic, retain) NSString *photo_50;
 @property (nullable, nonatomic, retain) NSSet<JDFriend *> *friends;
 
 @end
