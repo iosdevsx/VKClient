@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JDUser : NSManagedObject
 
 + (JDUser*) currentUser;
-+ (void) setCurrentUser: (nullable JDUser*) user
++ (void) setCurrentUser: (nullable JDUser*) user;
++ (NSArray*) sortedFriends;
++ (void) removeCurrentUser;
 
 @end
 

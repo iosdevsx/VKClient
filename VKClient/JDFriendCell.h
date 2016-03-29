@@ -10,4 +10,8 @@
 
 @interface JDFriendCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *firstName;
+@property (weak, nonatomic) IBOutlet UILabel *lastName;
+@property (weak, nonatomic) IBOutlet UIImageView *photo;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "JDUser.h"
+#import "JDFriend.h"
 #import "NSString+Helper.h"
 
 @implementation JDUser
@@ -29,18 +30,25 @@
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         return;
     }
-    NSLog(@"%@ %@ %@", user.id, user.first_name, user.last_name);
     NSDictionary* dictionary = @{@"currentUserId":user.id};
-    BOOL oke = [dictionary writeToFile:path atomically:NO];
-    if (oke)
-    {
-        NSLog(@"oke");
-    }
-    
-    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:[NSString pathForFileName:@"user.plist"]];
-    JDUser* curr = [JDUser MR_findFirstByAttribute:@"id" withValue:dict[@"currentUserId"]];
-    NSLog(@"%@ %@ %@", curr.id, curr.first_name, curr.last_name);
-
+    [dictionary writeToFile:path atomically:NO];
 }
+
++ (NSArray*) sortedFriends
+{
+    NSArray* friends = [[JDUser currentUser].friends allObjects];
+    NSSortDescriptor* firstDesc = [[NSSortDescriptor alloc] initWithKey:@"first_name" ascending:YES];
+    NSSortDescriptor* lastDesc = [[NSSortDescriptor alloc] initWithKey:@"last_name" ascending:YES];
+    return [friends sortedArrayUsingDescriptors:@[firstDesc, lastDesc]];
+}
+
++ (void) removeCurrentUser
+{
+    [JDFriend removeAll];
+    [[JDUser currentUser] MR_deleteEntity];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+    [JDUser setCurrentUser:nil];
+}
+
 
 @end

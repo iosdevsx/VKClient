@@ -7,6 +7,9 @@
 //
 
 #import "JDServerManager.h"
+#import "JDAccessToken.h"
+#import "JDUser.h"
+#import "JDFriend.h"
 
 @interface JDServerManager()
 
@@ -72,6 +75,70 @@
                                           failure(error);
                                       }
                                   }];
+    return task;
+}
+
+#pragma mark - News
+
+- (NSURLSessionDataTask*) getNewsFeedOnSuccess: (void(^)(NSArray* feeds)) success
+                                     onFailure: (void(^)(NSError* error)) failure
+{
+    JDAccessToken* currentToken = [JDAccessToken currentToken];
+    
+    NSURLSessionDataTask* task = [self.session
+                                  GET:@"newsfeed.get"
+                                  parameters:@{@"filters":@"post",
+                                               @"access_token":currentToken.token}
+                                  progress:nil
+                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                      NSMutableArray* array = [NSMutableArray array];
+                                      NSDictionary* response = [responseObject objectForKey:@"response"];
+                                      NSArray* items = [response objectForKey:@"items"];
+                                      for (NSDictionary* fields in items)
+                                      {
+                                          NSString* text = [fields objectForKey:@"text"];
+                                          [array addObject:text];
+                                      }
+                                      success([NSArray arrayWithArray:array]);
+                                  }
+                                  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                      
+                                  }];
+    return task;
+}
+
+- (NSURLSessionDataTask*) getFriendsForUserId: (NSString*) userId
+                                    onSuccess: (void(^)(NSArray* friends)) success
+                                    onFailure: (void(^)(NSError* error)) failure
+
+{
+    NSArray* friendsInCache = [JDUser sortedFriends];
+    if ([friendsInCache count] > 0)
+    {
+        success(friendsInCache);
+        return nil;
+    }
+    
+    NSURLSessionDataTask* task = [self.session GET:@"friends.get"
+                                        parameters:@{@"user_id":userId,
+                                                     @"order":@"name",
+                                                     @"fields":@"photo_50",
+                                                     @"name_case":@"nom",
+                                                     @"lang":@"ru"}
+                                          progress:nil
+                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+                                           {
+                                               NSArray* friends = [JDFriend MR_importFromArray:responseObject[@"response"]];
+                                               NSSet* friendsSet = [NSSet setWithArray:friends];
+                                               [[JDUser currentUser] setFriends:friendsSet];
+                                               
+                                               [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+                                               success(friends);
+                                           }
+                                           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+                                           {
+                                               NSLog(@"%@", [error localizedDescription]);
+                                           }];
     return task;
 }
 

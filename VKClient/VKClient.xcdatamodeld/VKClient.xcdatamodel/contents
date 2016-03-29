@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="JDFriend" representedClassName="JDFriend" syncable="YES">
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo_50" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="currentUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JDUser" inverseName="friends" inverseEntity="JDUser" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="uid"/>
+        </userInfo>
+    </entity>
     <entity name="JDUser" representedClassName="JDUser" syncable="YES">
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo_50" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="JDFriend" inverseName="currentUser" inverseEntity="JDFriend" syncable="YES"/>
         <userInfo>
             <entry key="relatedByAttribute" value="id"/>
         </userInfo>
     </entity>
     <elements>
-        <element name="JDUser" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="JDFriend" positionX="-227" positionY="-13" width="128" height="118"/>
+        <element name="JDUser" positionX="34" positionY="-13" width="128" height="118"/>
     </elements>
 </model>

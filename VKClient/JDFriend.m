@@ -11,6 +11,9 @@
 
 @implementation JDFriend
 
-// Insert code here to add functionality to your managed object subclass
++ (void) removeAll
+{
+    [JDFriend MR_truncateAll];
+}
 
 @end

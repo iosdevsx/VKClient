@@ -31,7 +31,7 @@ static NSString* const VK_APP_ID = @"5277780";
     "client_id=%@&"
     "display=mobile&"
     "redirect_uri=https://oauth.vk.com/blank.html&"
-    "scope=139286&"
+    "scope=8194&"
     "response_type=token&"
     "v=5.50", VK_APP_ID];
     

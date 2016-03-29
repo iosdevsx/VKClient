@@ -10,6 +10,7 @@
 //
 
 #import "JDUser.h"
+#import "JDFriend.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

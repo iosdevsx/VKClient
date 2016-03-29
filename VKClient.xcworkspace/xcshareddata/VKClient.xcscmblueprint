@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DBF06B55AF09EB34C07262388849CEB3DD96C932",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DBF06B55AF09EB34C07262388849CEB3DD96C932" : 0,
+    "498076C238B838D2BA308374495D36C5C7B6737A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D50AD232-6037-4B84-9149-148AEE206BE5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DBF06B55AF09EB34C07262388849CEB3DD96C932" : "VKClient\/",
+    "498076C238B838D2BA308374495D36C5C7B6737A" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VKClient",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VKClient.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/iosdevsx\/TableViewTest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "498076C238B838D2BA308374495D36C5C7B6737A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/iosdevsx\/VKClient.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DBF06B55AF09EB34C07262388849CEB3DD96C932"
+    }
+  ]
+}

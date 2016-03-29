@@ -88,12 +88,7 @@
 
 - (IBAction)actionLogout:(UIBarButtonItem *)sender
 {
-    JDUser* current = [JDUser currentUser];
-    
-    [current MR_deleteEntity];
-    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
-    
-    [JDUser setCurrentUser:nil];
+    [JDUser removeCurrentUser];
     [self showLoginController];
 }
 

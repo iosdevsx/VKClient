@@ -19,4 +19,11 @@
                                  onSuccess: (void(^)(JDUser* user, BOOL cached)) success
                                    failure: (void(^)(NSError* error)) failure;
 
+- (NSURLSessionDataTask*) getNewsFeedOnSuccess: (void(^)(NSArray* feeds)) success
+                                     onFailure: (void(^)(NSError* error)) failure;
+
+- (NSURLSessionDataTask*) getFriendsForUserId: (NSString*) userId
+                                    onSuccess: (void(^)(NSArray* friends)) success
+                                    onFailure: (void(^)(NSError* error)) failure;
+
 @end
