@@ -2,7 +2,7 @@
 //  JDUser+CoreDataProperties.h
 //  VKClient
 //
-//  Created by jsd on 15.03.16.
+//  Created by jsd on 29.03.16.
 //  Copyright © 2016 jsd. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,9 +16,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JDUser (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *first_name;
+@property (nullable, nonatomic, retain) NSNumber *id;
 @property (nullable, nonatomic, retain) NSString *last_name;
 @property (nullable, nonatomic, retain) NSString *photo_50;
-@property (nullable, nonatomic, retain) NSNumber *id;
+@property (nullable, nonatomic, retain) NSSet<JDFriend *> *friends;
+
+@end
+
+@interface JDUser (CoreDataGeneratedAccessors)
+
+- (void)addFriendsObject:(JDFriend *)value;
+- (void)removeFriendsObject:(JDFriend *)value;
+- (void)addFriends:(NSSet<JDFriend *> *)values;
+- (void)removeFriends:(NSSet<JDFriend *> *)values;
 
 @end
 
