@@ -78,6 +78,41 @@
     return task;
 }
 
+- (NSURLSessionDataTask*) getFriendsForUserId: (NSString*) userId
+                                    onSuccess: (void(^)(NSArray* friends)) success
+                                    onFailure: (void(^)(NSError* error)) failure
+
+{
+    NSArray* friendsInCache = [JDUser sortedFriends];
+    if ([friendsInCache count] > 0)
+    {
+        success(friendsInCache);
+        return nil;
+    }
+    
+    NSURLSessionDataTask* task = [self.session GET:@"friends.get"
+                                        parameters:@{@"user_id":userId,
+                                                     @"order":@"name",
+                                                     @"fields":@"photo_50",
+                                                     @"name_case":@"nom",
+                                                     @"lang":@"ru"}
+                                          progress:nil
+                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+                                  {
+                                      NSArray* friends = [JDFriend MR_importFromArray:responseObject[@"response"]];
+                                      NSSet* friendsSet = [NSSet setWithArray:friends];
+                                      [[JDUser currentUser] setFriends:friendsSet];
+                                      
+                                      [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+                                      success(friends);
+                                  }
+                                           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+                                  {
+                                      NSLog(@"%@", [error localizedDescription]);
+                                  }];
+    return task;
+}
+
 #pragma mark - News
 
 - (NSURLSessionDataTask*) getNewsFeedOnSuccess: (void(^)(NSArray* feeds)) success
@@ -104,41 +139,6 @@
                                   failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                       
                                   }];
-    return task;
-}
-
-- (NSURLSessionDataTask*) getFriendsForUserId: (NSString*) userId
-                                    onSuccess: (void(^)(NSArray* friends)) success
-                                    onFailure: (void(^)(NSError* error)) failure
-
-{
-    NSArray* friendsInCache = [JDUser sortedFriends];
-    if ([friendsInCache count] > 0)
-    {
-        success(friendsInCache);
-        return nil;
-    }
-    
-    NSURLSessionDataTask* task = [self.session GET:@"friends.get"
-                                        parameters:@{@"user_id":userId,
-                                                     @"order":@"name",
-                                                     @"fields":@"photo_50",
-                                                     @"name_case":@"nom",
-                                                     @"lang":@"ru"}
-                                          progress:nil
-                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
-                                           {
-                                               NSArray* friends = [JDFriend MR_importFromArray:responseObject[@"response"]];
-                                               NSSet* friendsSet = [NSSet setWithArray:friends];
-                                               [[JDUser currentUser] setFriends:friendsSet];
-                                               
-                                               [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
-                                               success(friends);
-                                           }
-                                           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
-                                           {
-                                               NSLog(@"%@", [error localizedDescription]);
-                                           }];
     return task;
 }
 
